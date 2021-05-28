@@ -7,10 +7,19 @@ import {
   TouchableWithoutFeedback,
 } from "react-native";
 
+const gameList = [{ id: 1, name: "pairFinding" }];
+
 export function HomeScreen(options) {
   return (
     <View style={styles.container}>
-      <Image source={require("../assets/screens/home/ball.png")}></Image>
+      <TouchableWithoutFeedback
+        onPress={() => options.navigation.navigate("Profile", gameList[0])} //TODO: passing 0 index
+      >
+        <Image
+          style={styles.item}
+          source={require("../assets/screens/home/ball.png")}
+        ></Image>
+      </TouchableWithoutFeedback>
     </View>
     // <Button
     //   title="Go to Jane's profile"
@@ -26,5 +35,9 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
     alignItems: "center",
     justifyContent: "center",
+  },
+  item: {
+    width: 100,
+    height: 100,
   },
 });

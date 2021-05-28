@@ -16,7 +16,7 @@ export default function App() {
         <Stack.Screen
           name="Home"
           component={HomeScreen}
-          // options={{ title: "Welcome" }}
+          options={{ header: () => undefined }} //TODO: tricky removing header :D
         />
         <Stack.Screen name="Profile" component={ProfileScreen} />
       </Stack.Navigator>
