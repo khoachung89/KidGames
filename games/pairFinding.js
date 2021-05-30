@@ -8,22 +8,14 @@ import {
   Text,
 } from "react-native";
 
-const gameList = [{ id: 1, name: "pairFinding" }];
-
-export function HomeScreen(options) {
+function PairFinding(options) {
   return (
     <View style={styles.container}>
-      <TouchableWithoutFeedback
-        onPress={() => options.navigation.navigate("Game", gameList[0])} //TODO: passing 0 index
-      >
-        <Image
-          style={styles.item}
-          source={require("../assets/screens/home/ball.png")}
-        ></Image>
-      </TouchableWithoutFeedback>
+      <Text>You are inside of pairFinding. Your game screen is here.</Text>
     </View>
   );
 }
+export default PairFinding;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
