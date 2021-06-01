@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import {
   StyleSheet,
   View,
@@ -6,14 +6,37 @@ import {
   TouchableWithoutFeedback,
   Text,
 } from "react-native";
-import characterImages from "../components/characterImages.js";
+import { characterImages, doorImage } from "../components/staticAssets.js";
 
 function Card(options) {
+  const [isShowing, setIsShowing] = useState(false);
   var src = characterImages[options.id];
+
+  const [imageSource, setImageSource] = useState(doorImage);
+  // flip = function () {
+  //   if (isShowing) {
+  //     setIsShowing(false);
+  //     setImageSource(doorImage);
+  //   } else {
+  //     setIsShowing(true);
+  //     setImageSource(characterImages[options.id]);
+  //   }
+  // };
   return (
     <View style={styles.container}>
-      <Image source={src}></Image>
-      <Text>You are inside of card.</Text>
+      <TouchableWithoutFeedback
+        onPress={() => {
+          if (isShowing) {
+            setIsShowing(false);
+            setImageSource(doorImage);
+          } else {
+            setIsShowing(true);
+            setImageSource(characterImages[options.id]);
+          }
+        }}
+      >
+        <Image source={imageSource} style={styles.cardItem}></Image>
+      </TouchableWithoutFeedback>
     </View>
   );
 }
@@ -21,12 +44,13 @@ export default Card;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
+    // backgroundColor: "blue",
     alignItems: "center",
     justifyContent: "center",
   },
-  item: {
-    width: 100,
-    height: 100,
+  cardItem: {
+    width: "75%",
+    height: "75%",
+    resizeMode: "stretch",
   },
 });
